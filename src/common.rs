@@ -1,31 +1,34 @@
 #[derive(Debug, Copy, Clone)]
-pub enum CommState {
-    Request = 0,
-    DataTransfer = 1,
-    Checksum = 3,
+pub enum TransferState {
+    TransferReq = 0,
+    TransferReqAck = 1,
+    TransferInit = 2,
+    TransferComp = 3,
     Unknown = 4,
 }
 
-pub fn get_state(val: u8) -> CommState {
+pub fn get_state(val: u8) -> TransferState {
     match val {
-        0 => CommState::Request,
-        1 => CommState::DataTransfer,
-        2 => CommState::Checksum,
-        _ => CommState::Unknown,
+        0 => TransferState::TransferReq,
+        1 => TransferState::TransferReqAck,
+        2 => TransferState::TransferInit,
+        3 => TransferState::TransferComp,
+        _ => TransferState::Unknown,
     }
 }
 
-pub fn get_value(state: CommState) -> u8 {
+pub fn get_value(state: TransferState) -> u8 {
     match state {
-        CommState::Request => 0,
-        CommState::DataTransfer => 1,
-        CommState::Checksum => 2,
-        CommState::Unknown => 3,
+        TransferState::TransferReq => 0,
+        TransferState::TransferReqAck => 1,
+        TransferState::TransferInit => 2,
+        TransferState::TransferComp => 3,
+        TransferState::Unknown => 4,
     }
 }
 
-// pub const DATA_SIZE: usize = 1024 * 1024;
-pub const DATA_SIZE: usize = 128;
+pub const DATA_SIZE: usize = 1024 * 1024;
+// pub const DATA_SIZE: usize = 1024 * 100;
 
 //
 // end of file

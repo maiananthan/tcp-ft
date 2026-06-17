@@ -5,8 +5,16 @@
 - Supports:
     1. cross-platform compactible
     2. larger file transfer support (upto 16 GiB)
-    3. on-the-fly data compression for lesser bandwidth consumption
-    4. integrity check using checksum validation
+    3. data compression for lesser bandwidth consumption
+    4. integrity check using CRC checksum validation
+
+- [Design](./docs/Design.md)
+
+- [Performance Metrics](./docs/perf-metrics.md)
+
+- Sequence Diagram
+
+![tcp-ft](docs/tcp-ft-seq-dia.svg)
 
 ## build and run
 
